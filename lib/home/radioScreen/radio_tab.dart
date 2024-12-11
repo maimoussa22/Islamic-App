@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TasbehTab extends StatelessWidget {
-  const TasbehTab({super.key});
+class RadioTab extends StatelessWidget {
+  const RadioTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.pink,
+
     );
   }
 }
