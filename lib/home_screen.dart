@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:islami_project/app_Colors.dart';
-import 'package:islami_project/hadith_tab.dart';
-import 'package:islami_project/quran_tab.dart';
-import 'package:islami_project/radio_tab.dart';
-import 'package:islami_project/tasbeh_tab.dart';
-import 'package:islami_project/time_tab.dart';
+import 'package:islami_project/home/hadethScreen/hadith_tab.dart';
+import 'package:islami_project/home/quranScreen/quran_tab.dart';
+import 'package:islami_project/home/radioScreen/radio_tab.dart';
+import 'package:islami_project/home/tasbehScreen/tasbeh_tab.dart';
+import 'package:islami_project/home/timeScreen/time_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.whiteColor,
           unselectedItemColor: AppColors.blackColor,
+          showUnselectedLabels: false,
           currentIndex: selectedIndex,
           onTap:(index){
             selectedIndex =index ;

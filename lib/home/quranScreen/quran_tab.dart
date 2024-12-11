@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_project/app_Colors.dart';
-import 'package:islami_project/suras_list_widget.dart';
+import 'package:islami_project/home/quranScreen/suras_list_widget.dart';
 
 class QuranTab extends StatelessWidget {
 
@@ -361,6 +361,7 @@ class QuranTab extends StatelessWidget {
       children: [
         Image.asset('assets/images/islamiLogo.png'),
         TextField(
+          cursorColor: AppColors.whiteColor,
           decoration: InputDecoration(
               hintText: 'Sura Name',
               hintStyle: TextStyle(color: Colors.white),
@@ -437,25 +438,30 @@ class QuranTab extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 10,),
         Expanded(
-          child: ListView.separated(
-            itemCount: arabicAuranSuras.length,
-              itemBuilder:(context , index){
-                return SurasListWidget(
-                  index: index,
-                  surasEn:englishQuranSuras[index] ,
-                  ayaNum: AyaNumber[index],
-                  surasAr:arabicAuranSuras[index] ,
-                ) ;
+          child: Container(
+            margin: EdgeInsets.only(left: 20),
+            child: ListView.separated(
+              padding: EdgeInsets.zero,
+              itemCount: arabicAuranSuras.length,
+                itemBuilder:(context , index){
+                  return SurasListWidget(
+                    index: index,
+                    surasEn:englishQuranSuras[index] ,
+                    ayaNum: AyaNumber[index],
+                    surasAr:arabicAuranSuras[index] ,
+                  ) ;
+                },
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(
+                  thickness: 2,
+                  indent: 50,
+                  endIndent: 50,
+                );
               },
-            separatorBuilder: (BuildContext context, int index) {
-              return Divider(
-                thickness: 2,
-                indent: 50,
-                endIndent: 50,
-              );
-            },
 
+            ),
           ),
         )
       ],
