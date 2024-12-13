@@ -12,11 +12,11 @@ class HadethContentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      margin: EdgeInsets.symmetric(horizontal: 20,),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20,),
       child: Text(" ${content}",
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColors.primaryDark,
             fontSize: 20,
           fontWeight: FontWeight.bold

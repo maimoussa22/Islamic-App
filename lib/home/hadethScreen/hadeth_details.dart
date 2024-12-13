@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_project/app_Colors.dart';
 import 'package:islami_project/home/hadethScreen/hadeth_content_item.dart';
@@ -15,7 +14,7 @@ class HadethDetailsWidget extends StatelessWidget {
       backgroundColor: AppColors.blackColor,
       appBar: AppBar(
         title: Text('Hadith ${args.hadethNum}',
-        style:TextStyle(
+        style:const TextStyle(
           color: AppColors.primaryDark
         ),
         ),
@@ -30,17 +29,17 @@ class HadethDetailsWidget extends StatelessWidget {
             fit: BoxFit.fill,),
           Column(
             children: [
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Text(args.title,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 24,
                     color: AppColors.primaryDark,
                     fontWeight: FontWeight.bold
                 ),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
               args.content.isEmpty?
-              Expanded(
+              const Expanded(
                 child: Center(
                   child: CircularProgressIndicator(
                     color: AppColors.primaryDark,
