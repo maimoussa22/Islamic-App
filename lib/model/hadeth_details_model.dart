@@ -1,9 +1,9 @@
 class HadethDetailsModal{
 
   String title;
-  String content;
+  List<String> content;
+  int hadethNum;
 
-  HadethDetailsModal({required this.title , required this.content});
-
+  HadethDetailsModal({required this.title , required this.content, required this.hadethNum});
 
 }

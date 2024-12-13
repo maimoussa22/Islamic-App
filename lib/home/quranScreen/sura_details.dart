@@ -25,7 +25,6 @@ class _SuraDetailsWidgetState extends State<SuraDetailsWidget> {
     return Scaffold(
       backgroundColor: AppColors.blackColor,
       appBar: AppBar(
-        backgroundColor: AppColors.blackColor,
         title: Text('${args.surasEn}',
         style: TextStyle(
           color: AppColors.primaryDark,
