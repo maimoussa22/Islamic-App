@@ -3,7 +3,7 @@ class SuraDetailsModal{
   String surasEn;
   String numOfVerses;
   String surasAr;
-  int index;
+  String fileName;
 
   static List<String> surasEnNameList = [
     "Al-Fatiha",
@@ -121,7 +121,7 @@ class SuraDetailsModal{
     "Al-Falaq",
     "An-Nas"
   ];
-  static List<String> surasArnNameList = [
+  static List<String> surasArNameList = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -354,16 +354,10 @@ class SuraDetailsModal{
     '6'
   ];
 
-  SuraDetailsModal({required this.surasEn , required this.surasAr ,
-    required this.numOfVerses , required this.index});
+  static List<SuraDetailsModal> suraList =[];
 
-  static getSuraDetails(int index){
-    return SuraDetailsModal(
-        surasEn: surasEnNameList[index],
-        surasAr: surasArnNameList[index],
-        numOfVerses: numOfVersesList[index],
-        index: index
-    );
-}
+  SuraDetailsModal({required this.surasEn , required this.surasAr ,
+    required this.numOfVerses , required this.fileName});
+
 
 }
