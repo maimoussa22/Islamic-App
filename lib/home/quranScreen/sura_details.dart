@@ -20,7 +20,7 @@ class _SuraDetailsWidgetState extends State<SuraDetailsWidget> {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsModal;
     if(verses.isEmpty) {
-      loadFileSuras(args.index);
+      loadFileSuras(args.fileName);
     }
     return Scaffold(
       backgroundColor: AppColors.blackColor,
@@ -83,8 +83,8 @@ class _SuraDetailsWidgetState extends State<SuraDetailsWidget> {
     );
   }
 
-  void loadFileSuras(int index) async {
-    String surasContent = await rootBundle.loadString('assets/files/quran/${index+1}.txt') ;
+  void loadFileSuras(String fileName) async {
+    String surasContent = await rootBundle.loadString('assets/files/quran/$fileName') ;
     List<String> surasLines = surasContent.split('\n');
     setState(() {
       verses = surasLines;

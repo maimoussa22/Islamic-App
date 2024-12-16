@@ -5,8 +5,9 @@ import 'package:islami_project/model/sura_details.dart';
 
 class SurasListWidget extends StatelessWidget {
   SuraDetailsModal suraDetailsModal ;
+  int index;
 
-  SurasListWidget({required this.suraDetailsModal});
+  SurasListWidget({required this.suraDetailsModal, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class SurasListWidget extends StatelessWidget {
           alignment: Alignment.center,
           children:[
             Image.asset('assets/images/sura_num.png'),
-            Text('${suraDetailsModal.index+1}',
+            Text('${index+1}',
             style: const TextStyle(color: AppColors.whiteColor,
             fontWeight: FontWeight.bold
             ),
