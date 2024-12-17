@@ -69,52 +69,10 @@ class _QuranTabState extends State<QuranTab> {
             });
           },
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 21,top: 20),
-          child: Text('Most Recently',
-          style: TextStyle(color: AppColors.whiteColor,
-          fontSize: 16,
-            fontWeight: FontWeight.bold
-          ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-          padding: const EdgeInsets.symmetric(horizontal: 17,vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.primaryDark
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Sura En',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold
-                  ),
-                  ),
-                  Text('Sura Ar',
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  Text('Aya num',
-                  style: TextStyle(
-                    fontSize: 14,
-                      fontWeight: FontWeight.bold
-                  ),
-                  ),
-                ],
-              ),
-              Image.asset('assets/images/mostRecently.png')
-            ],
-          ),
-        ),
+        searchText.isNotEmpty ?
+            SizedBox()
+            :
+        builtMostRecently(),
         const Padding(
           padding: EdgeInsets.only(left: 21,top: 10),
           child: Text('Suras List',
@@ -159,6 +117,59 @@ class _QuranTabState extends State<QuranTab> {
             ),
           ),
         )
+      ],
+    );
+  }
+  Widget builtMostRecently(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 21,top: 20),
+          child: Text('Most Recently',
+            style: TextStyle(color: AppColors.whiteColor,
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 17,vertical: 12),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: AppColors.primaryDark
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Sura En',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text('Sura Ar',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text('Aya num',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              ),
+              Image.asset('assets/images/mostRecently.png')
+            ],
+          ),
+        ),
       ],
     );
   }
