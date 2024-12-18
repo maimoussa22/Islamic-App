@@ -3,6 +3,7 @@ import 'package:islami_project/app_Colors.dart';
 import 'package:islami_project/home/quranScreen/sura_details.dart';
 import 'package:islami_project/home/quranScreen/suras_list_widget.dart';
 import 'package:islami_project/model/sura_details.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuranTab extends StatefulWidget {
 
@@ -25,9 +26,12 @@ class _QuranTabState extends State<QuranTab> {
 }
   initState(){
     addSuraList();
+    loadLastSura();
   }
   List<SuraDetailsModal> filteredList = SuraDetailsModal.suraList;
   String searchText = '';
+
+  Map<String,String>lastSuraList={};
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,6 +96,11 @@ class _QuranTabState extends State<QuranTab> {
                 itemBuilder:(context , index){
                   return InkWell(
                     onTap: (){
+                      saveLastSura(
+                        suraArName: filteredList[index].surasAr,
+                        suraEnName: filteredList[index].surasEn,
+                        numOfVerses: filteredList[index].numOfVerses.toString(),
+                      );
                       Navigator.pushNamed(context, SuraDetailsWidget.routeName,
                           arguments: filteredList[index]
                       );
@@ -143,22 +152,22 @@ class _QuranTabState extends State<QuranTab> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Column(
+               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Sura En',
+                  Text(lastSuraList['suraEnName'] ?? '',
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold
                     ),
                   ),
-                  Text('Sura Ar',
+                  Text(lastSuraList['suraArName'] ?? '',
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold
                     ),
                   ),
-                  Text('Aya num',
+                  Text("${lastSuraList['numOfVerses'] ?? ''} Verses",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold
@@ -172,5 +181,35 @@ class _QuranTabState extends State<QuranTab> {
         ),
       ],
     );
+  }
+
+  saveLastSura({required String suraArName , required String suraEnName ,
+    required String numOfVerses}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('suraArName',suraArName);
+    await prefs.setString('suraEnName',suraEnName);
+    await prefs.setString('numOfVerses',numOfVerses);
+     loadLastSura();
+
+  }
+
+  getLastSura() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String suraArName = prefs.getString('suraArName')??'';
+    String suraEnName = prefs.getString('suraEnName') ?? '';
+    String numOfVerses = prefs.getString('numOfVerses') ?? '';
+    return{
+      'suraArName':suraArName,
+      'suraEnName':suraEnName,
+      'numOfVerses':numOfVerses,
+
+    };
+  }
+
+  loadLastSura() async {
+    lastSuraList =await getLastSura();
+    setState(() {
+
+    });
   }
 }
